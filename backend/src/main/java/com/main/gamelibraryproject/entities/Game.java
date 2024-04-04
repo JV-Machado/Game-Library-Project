@@ -21,15 +21,18 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode(of = "id")
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Game {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private String game_name;
-	private String game_genre;
+	@Column(name="game_name")
+	private String gameName;
+	
+	@Column(name="game_genre")
+	private String gameGenre;
 	
 	@Column(name="release_year")
 	private Integer releaseYear;
